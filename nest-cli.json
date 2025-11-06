@@ -1,0 +1,16 @@
+{
+  "monorepo": true,
+  "compilerOptions": {
+    "tsConfigPath": "tsconfig.build.json"
+  },
+  "projects": {
+    "api-gateway": { "type": "application", "root": "api-gateway" },
+    "auth-service": { "type": "application", "root": "auth-service" },
+    "wallet-service": { "type": "application", "root": "wallet-service" },
+    "transaction-service": { "type": "application", "root": "transaction-service" },
+    "notification-service": { "type": "application", "root": "notification-service" },
+    "common": { "type": "library", "root": "common" },
+    "events": { "type": "library", "root": "events" },
+    "shared": { "type": "library", "root": "shared" }
+  }
+}
