@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package transaction;
+
+message JsonPayload {
+  string json = 1;
+}
+
+service TransactionService {
+  rpc HealthCheck(JsonPayload) returns (JsonPayload);
+  rpc CreatePaymentIntent(JsonPayload) returns (JsonPayload);
+  rpc ConfirmPayment(JsonPayload) returns (JsonPayload);
+}

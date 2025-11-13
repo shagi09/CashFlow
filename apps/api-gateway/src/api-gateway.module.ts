@@ -1,10 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ApiGatewayController } from './api-gateway.controller';
+import { ApiGatewayTransactionController } from './api-gateway.transaction.controller';
 import { ApiGatewayService } from './api-gateway.service';
+import { MongoDBConnectionModule } from 'libs/database/mongo.connection';
+import {EventEmitterModule} from "@nestjs/event-emitter";
+import { AuthClientsModule, TransactionClientsModule } from 'libs/grpc/grpc.clients.module';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
-  imports: [],
-  controllers: [ApiGatewayController],
+  imports: [MongoDBConnectionModule,
+    EventEmitterModule.forRoot(),
+    AuthClientsModule,
+    TransactionClientsModule,
+
+  ],
+  controllers: [ApiGatewayTransactionController],
   providers: [ApiGatewayService],
 })
 export class ApiGatewayModule {}

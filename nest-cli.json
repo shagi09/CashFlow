@@ -4,13 +4,36 @@
     "tsConfigPath": "tsconfig.build.json"
   },
   "projects": {
-    "api-gateway": { "type": "application", "root": "api-gateway" },
-    "auth-service": { "type": "application", "root": "auth-service" },
-    "wallet-service": { "type": "application", "root": "wallet-service" },
-    "transaction-service": { "type": "application", "root": "transaction-service" },
-    "notification-service": { "type": "application", "root": "notification-service" },
-    "common": { "type": "library", "root": "common" },
-    "events": { "type": "library", "root": "events" },
-    "shared": { "type": "library", "root": "shared" }
+      "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    },
+    "wallet-service": { "type": "application", 
+    "root": "wallet-service",
+    "entryFile": "main",
+    "sourceRoot": "apps/wallet-service/src",
+    "compilerOptions": {
+        "tsConfigPath": "apps/wallet-service/tsconfig.app.json"
+      } },
+    "auth-service": { "type": "application", "root": "auth-service", "entryFile": "main",
+       "sourceRoot": "apps/auth-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth-service/tsconfig.app.json"
+      } },
+    "transaction-service": { "type": "application", "root": "transaction-service", "entryFile": "main",
+       "sourceRoot": "apps/transaction-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/transaction-service/tsconfig.app.json"
+      } },
+    "notification-service": { "type": "application", "root": "notification-service", "entryFile": "src/main",
+       "sourceRoot": "apps/notification-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/notification-service/tsconfig.app.json"
+      } }
   }
 }

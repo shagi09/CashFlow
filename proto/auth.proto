@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package auth;
+
+message JsonPayload {
+  string json = 1;
+}
+
+service AuthService {
+  rpc CreateUser (JsonPayload) returns (JsonPayload);
+  rpc GetUserById (JsonPayload) returns (JsonPayload);
+}
