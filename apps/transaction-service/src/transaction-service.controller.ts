@@ -7,7 +7,7 @@ import { JsonPayload } from 'src/generated/transaction';
 export class TransactionServiceController {
   constructor(private readonly transactionServiceService: TransactionServiceService) {}
 
-    @GrpcMethod('TransactionService', 'HealthCheck')
+    @GrpcMethod('TransactionService', 'healthCheck')
     async healthCheck(): Promise<JsonPayload> {
       const result = {
         status: 200,

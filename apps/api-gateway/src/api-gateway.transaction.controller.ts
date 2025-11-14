@@ -8,7 +8,7 @@ import { JsonPayload } from 'src/generated/transaction';
 import { TransactionServiceClient } from 'src/generated/transaction';
 
 
-@Controller('users')
+@Controller('transaction')
 export class ApiGatewayTransactionController implements OnModuleInit {
   private transactionService: TransactionServiceClient;
 

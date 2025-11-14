@@ -1,14 +1,19 @@
 import { NestFactory } from '@nestjs/core';
+import { Transport } from '@nestjs/microservices';
+import { join } from 'path';
 import { TransactionServiceModule } from './transaction-service.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(TransactionServiceModule);
+  const app = await NestFactory.createMicroservice(TransactionServiceModule, {
+    transport: Transport.GRPC,
+    options: {
+      package: 'transaction',
+      protoPath: join(process.cwd(), '/proto/transaction.proto'),
+      url: 'localhost:4001',  // <-- RUNS gRPC SERVER HERE
+    },
+  });
 
-  // Use uppercase PORT (Node convention) and default to 4000
-  const port = process.env.PORT || 4001;
-
-  await app.listen(port);
-  console.log(`🚀 Transaction Service is running on port ${port}`);
+  await app.listen();
+  console.log('🚀 Transaction gRPC service running on 4001');
 }
-
 bootstrap();
