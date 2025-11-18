@@ -8,7 +8,7 @@
     "start:dev:transaction": "nest start transaction-service --watch",
     "start:dev:auth": "nest start auth-service --watch",
     "start:all": "concurrently \"npm run start:dev:gateway\" \"npm run start:dev:auth\" \"npm run start:dev:transaction\"",
-  "proto:gen": " protoc --plugin=protoc-gen-ts_proto=node_modules/.bin/protoc-gen-ts_proto.cmd --ts_proto_out=src/generated --ts_proto_opt=nestJs=true,addGrpcMetadata=true,outputServices=grpc-js --proto_path=./proto ./proto/*.proto"
+    "proto:gen": " protoc --plugin=protoc-gen-ts_proto=node_modules/.bin/protoc-gen-ts_proto.cmd --ts_proto_out=src/generated --ts_proto_opt=nestJs=true,addGrpcMetadata=true,outputServices=grpc-js --proto_path=./proto ./proto/*.proto"
   },
   "keywords": [],
   "author": "",
@@ -22,12 +22,17 @@
     "@nestjs/microservices": "^11.1.8",
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.1.8",
-    "mongoose": "^8.19.3"
+    "@nestjs/swagger": "^11.2.1",
+    "class-validator": "^0.14.2",
+    "mongoose": "^8.19.3",
+    "stripe": "^19.3.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@grpc/grpc-js": "^1.14.1",
     "@grpc/proto-loader": "^0.8.0",
     "@types/node": "^24.10.0",
+    "@types/stripe": "^8.0.416",
     "ts-node": "^10.9.2",
     "ts-proto": "^2.8.3",
     "typescript": "^5.9.3"

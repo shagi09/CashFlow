@@ -9,6 +9,12 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [MongoDBConnectionModule,
+    ConfigModule.forRoot(
+      {
+        isGlobal: true,
+        envFilePath: '.env',
+      },
+    ),
     EventEmitterModule.forRoot(),
     AuthClientsModule,
     TransactionClientsModule,
