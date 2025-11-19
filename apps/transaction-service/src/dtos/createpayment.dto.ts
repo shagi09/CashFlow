@@ -15,7 +15,7 @@ export class CreatePaymentDto {
   @IsString()
   currency: string;
 
-  @ApiProperty()
+  //@ApiProperty()
   @IsString()
   customerId?: string;
 }

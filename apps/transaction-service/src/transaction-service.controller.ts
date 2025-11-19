@@ -37,6 +37,10 @@ async createPaymentIntent(data: any) {
     amount,
     currency,
     metadata: { orderId },
+    automatic_payment_methods: {
+    enabled: true,
+    allow_redirects: 'never',
+  },
   });
 
   return {
@@ -45,6 +49,24 @@ async createPaymentIntent(data: any) {
       clientSecret: intent.client_secret,
       status: intent.status,
       message: 'PaymentIntent created',
+    })
+  };
+}
+
+@GrpcMethod('TransactionService', 'confirmPayment')
+async confirmPayment(data: any) {
+  const body = JSON.parse(data.json);  // <-- FIX
+  console.log("Received body:", body);
+
+  const { paymentIntentId, paymentmethod } = body;
+
+  const intent = await this.stripe.paymentIntents.confirm(paymentIntentId, { payment_method: paymentmethod });
+
+  return {
+    json: JSON.stringify({
+      paymentIntentId: intent.id,
+      status: intent.status,
+      message: 'PaymentIntent confirmed',
     })
   };
 }

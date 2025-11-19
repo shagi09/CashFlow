@@ -42,4 +42,14 @@ export class ApiGatewayTransactionController implements OnModuleInit {
       map(response => JSON.parse(response.json))
       );
   }
+
+  @Post('confirmpayment')
+  confirmPaymentIntent(
+    @Body() confirmPaymentDto: ConfirmPaymentDto
+  ): Observable<any> {
+      const payload: JsonPayload = { json: JSON.stringify({ ...confirmPaymentDto}) };
+      return this.transactionService.confirmPayment(payload).pipe(
+      map(response => JSON.parse(response.json))
+      );
+  }
 }

@@ -7,4 +7,9 @@ export class ConfirmPaymentDto {
   @IsString()
   @IsNotEmpty()
   paymentIntentId: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  paymentmethod: string;
 }
